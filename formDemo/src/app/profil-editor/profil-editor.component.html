@@ -1,0 +1,55 @@
+<p>profil-editor works!</p>
+
+<p> Form Value : {{ profileForm.value | json }}</p>
+<p> Form status: {{ profileForm.status }}</p>
+<form [formGroup] = "profileForm" (ngSubmit)="onSubmit()">
+
+    <h2> Utilisateur </h2>
+
+    <div>
+        <label for="fist-name">Fisrt Name:</label>
+        <input id = "fist-name" type ="text" formControlNAme="firstName"> 
+    </div>
+
+    <div>
+        <label for="last-name">Last Name:</label>
+        <input id ="mast-name" type ="text" formControlNAme="lastName">
+    </div>
+
+    <div formGroupName="adresse">
+        <h2> Adresse </h2>
+        <div>
+            <label for="rue"> Rue</label>
+            <input id="rue" type="text" formControlName="rue">
+        </div>
+
+        <div>
+            <label for="ville"> ville </label>
+            <input id="ville" type="text" formControlName="ville">
+        </div>
+
+        <div>
+            <label for="codePostal "> Code Postal </label>
+            <input id="codePostal" type="text" formControlName="codePostal">
+        </div>
+
+        <div formArrayName="aliases">
+            <h2>Aliases</h2>
+            <button type="button" (click)="addAlias()">+ Add another alias</button>
+          
+            <div *ngFor="let alias of aliases.controls; let i=index">
+              <!-- The repeated alias template -->
+              <label for="alias-{{ i }}">Alias:</label>
+              <input id="alias-{{ i }}" type="text" [formControlName]="i">
+            </div>
+</div>
+
+
+    </div>
+
+    <div>
+        <button type="Submit" [disabled]="!profileForm.valid">Submit</button>
+    </div>
+</form>
+
+<button type ="button" (click)="updateProfile()"> Reinitialiser le formulaire</button>

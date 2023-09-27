@@ -1,0 +1,15 @@
+here We go
+<h1>composant - lifecycle - onclick : selectEmploye(employe)</h1>
+<div>
+  <!-- employes: nom de la variable declaré dans component.ts: tableau d'Employe-->
+<p *ngFor="let employe of employes"  (click)="selectEmploye(employe)" style="border:1px">
+  <span> {{employe.id }}</span>
+  <span> {{employe.name }}</span>
+  <img src="{{employe.picture }}" alt="photo n'est pas trouvée" width="100px" height="100px"/>
+  <span> {{employe.roles }}</span>
+  <span> {{employe.birthDate }}</span>
+
+</p>  
+</div>
+
+<p class="btn btn-primary" > ceci est un paragraphe stylisé par bootstrap</p>

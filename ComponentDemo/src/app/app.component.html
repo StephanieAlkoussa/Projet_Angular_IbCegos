@@ -1,0 +1,50 @@
+<h1> DataBinding </h1>
+<section>
+
+  <h2> Interpollation</h2>
+  <p> a null firstname = {{firstname}}</p>
+  <p> color = {{color}}</p>
+  <p> isClient = {{isClient}}</p>
+  <img src={{imagePath}} alt="marseille">
+
+  <hr> 
+  <div *ngIf="isClient"> tada is client = true dans la partir ts du component</div>
+
+  <ul>
+    <li *ngFor = "let month of months">
+       <!--let:pour declarer une variable, c'est une boucle for Each en javascript pour dire "pour chaque month dans le tableau months"-->
+       {{month}} </li>
+  </ul>
+  <span *ngFor = "let day of days"> {{day}} </span>
+  
+  <div [ngSwitch]="expression">
+    <div *ngSwitchCase = "'expression1'"> c'est l'expression1</div>
+    <div *ngSwitchCase = "'expression2'"> c'est l'expression2</div>
+    <div *ngSwitchDefault> celle-ci n'est pas une expression</div>
+  </div>
+
+  <h2> Event Binding </h2>
+  <div (click)="onClick()"> zone de detection d'un clic dans la vue</div>
+
+  <input (keyup) ="onKey($event)"> 
+  <p>{{value}}</p>
+
+  <input #box (keyup)="onKey2 (box.value)">
+  <p> {{ box.value}}</p>
+
+  <h3>blur event: </h3>
+  <input #box2 (blur)="onBlur(box2.value)" >
+  <p>onKey() event : {{ entry }}</p>
+  <p>template reference:
+  {{ box2.value }}</p>
+
+  <h4> Demo directive FOCUS</h4>
+
+  <input (focus)="onFocus()" (focusout)="onFocusOut()" />
+  <p> {{message}}</p>
+    <!-- Si on utilise la directive blur dans ts==> html: <input (focus)="onFocus()" (blur)='onBlur()' -->
+
+    <h4> Demo directive MOUSEOVER MOUSEOUT</h4>
+    <input (mouseover)="onMouseOver()" (mouseout)="onMouseOut()"/>
+    <p> {{message2}}</p>
+</section>

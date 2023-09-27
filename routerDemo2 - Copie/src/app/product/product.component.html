@@ -1,0 +1,22 @@
+
+<ng-template #errors class="text-danger"> {{errorMessage}}> 
+    <div>{{errorMessage}}</div>
+    </ng-template>
+<div class="card" *ngIf="products; else errors"></div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">nom</th>
+        <th scope="col">prix</th>
+      </tr> </thead>
+      <tbody>
+        <tr *ngFor="let product of products"> <!--faire une boucle pour chaque ligne-->
+          <th> {{ product.id }}</th>
+          <td> {{ product.name }}</td>
+          <td> {{ product.price }}</td>
+          <td> <button (click)="handleDeleteProduct (product)" class = "btn btn-danger"> <i class="bi bi-trash3"></i></button></td>
+        </tr>
+    </tbody> 
+   </table>
+
